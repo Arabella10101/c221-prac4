@@ -4,6 +4,11 @@
  */
 package com.mycompany.cos221prac4;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author arabella
@@ -105,8 +110,18 @@ public class AddFilm extends javax.swing.JFrame {
         lastupdate.setPreferredSize(new java.awt.Dimension(175, 20));
 
         add.setText("Add");
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
 
         back.setText("Back");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -209,6 +224,44 @@ public class AddFilm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        this.dispose();
+        new MainFrame().setVisible(true);
+    }//GEN-LAST:event_backActionPerformed
+
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+        String title= this.title.getText();
+        String descrip =this.descrip.getText();
+        String relsyear=releaseyear.getText();
+        String lanid=this.lanid.getText();
+        String orglanid=this.orglanid.getText();
+        String rentdur=rentaldur.getText();
+        String rentrate=rentalrate.getText();
+        String len=length.getText();
+        String replcost=replacecost.getText();
+        String rate=rating.getText();
+        String specfeat=specialfeatures.getText();
+        String lastup=lastupdate.getText();
+        
+        String sql="INSERT INTO film(title, description, release_year,language_id, original_language_id, rental_duration, rental_rate,length, replacement_cost,"
+                + " rating, special_features, last_update) VALUES('"+title+"', '"+descrip+"', '"+relsyear+"', '"+lanid+"', '"+orglanid+"', '"
+                + rentdur+"', '"+rentrate+"', '"+len+"', '"+replcost+"', '"+rate+"', '"+specfeat+"', '"+lastup+"')";
+        
+        DBConnection objDBC;
+        try {
+            objDBC = new DBConnection();
+            objDBC.update(sql);
+            JOptionPane.showConfirmDialog(null, "Film added", null, JOptionPane.DEFAULT_OPTION);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AddFilm.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showConfirmDialog(null, "Add film not successful", null, JOptionPane.DEFAULT_OPTION);
+        } catch (SQLException ex) {
+            Logger.getLogger(AddFilm.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showConfirmDialog(null, "Add film not successful", null, JOptionPane.DEFAULT_OPTION);
+        }
+        
+    }//GEN-LAST:event_addActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -243,7 +296,6 @@ public class AddFilm extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
     private javax.swing.JButton back;
