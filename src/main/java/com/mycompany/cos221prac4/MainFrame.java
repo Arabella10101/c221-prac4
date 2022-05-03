@@ -4,6 +4,13 @@
  */
 package com.mycompany.cos221prac4;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author arabella
@@ -26,21 +33,170 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        staff = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        stafftbl = new javax.swing.JTable();
+        staffSearchtxtField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        films = new javax.swing.JPanel();
+        inven = new javax.swing.JPanel();
+        clients = new javax.swing.JTabbedPane();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        stafftbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "First name", "Surname", "address", "address 2", "district", "city", "postal code", "phone", "store", "active"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(stafftbl);
+
+        staffSearchtxtField.setText("Enter...................");
+        staffSearchtxtField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                staffSearchKeyReleased(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Noto Sans", 0, 24)); // NOI18N
+        jLabel1.setText("Filter");
+
+        javax.swing.GroupLayout staffLayout = new javax.swing.GroupLayout(staff);
+        staff.setLayout(staffLayout);
+        staffLayout.setHorizontalGroup(
+            staffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(staffLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(staffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1238, Short.MAX_VALUE)
+                    .addGroup(staffLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(staffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(staffSearchtxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        staffLayout.setVerticalGroup(
+            staffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(staffLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(staffSearchtxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(146, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Staff", staff);
+
+        javax.swing.GroupLayout filmsLayout = new javax.swing.GroupLayout(films);
+        films.setLayout(filmsLayout);
+        filmsLayout.setHorizontalGroup(
+            filmsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1250, Short.MAX_VALUE)
+        );
+        filmsLayout.setVerticalGroup(
+            filmsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 713, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Films", films);
+
+        javax.swing.GroupLayout invenLayout = new javax.swing.GroupLayout(inven);
+        inven.setLayout(invenLayout);
+        invenLayout.setHorizontalGroup(
+            invenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1250, Short.MAX_VALUE)
+        );
+        invenLayout.setVerticalGroup(
+            invenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 713, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Inventory", inven);
+        jTabbedPane1.addTab("Clients", clients);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1058, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 744, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void staffSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_staffSearchKeyReleased
+        String vals = staffSearchtxtField.getText();
+        TableModel sk = (DefaultTableModel) stafftbl.getModel(); //creates tabel model
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>((DefaultTableModel) sk); //creates tabel row sorter
+
+        List<RowFilter<Object, Object>> filters = new ArrayList<RowFilter<Object, Object>>(2); //creates row filters
+        //filters results for values entered to display both upper and lower case version of value entered
+        filters.add(RowFilter.regexFilter(vals.toLowerCase())); //adds filter
+        filters.add(RowFilter.regexFilter(vals.toUpperCase())); //adds filter
+        RowFilter<Object, Object> rf = RowFilter.orFilter(filters);
+
+        stafftbl.setRowSorter(tr); //applies them to the tbl
+        tr.setRowFilter(rf);
+    }//GEN-LAST:event_staffSearchKeyReleased
 
     /**
      * @param args the command line arguments
@@ -78,5 +234,14 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane clients;
+    private javax.swing.JPanel films;
+    private javax.swing.JPanel inven;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel staff;
+    private javax.swing.JTextField staffSearchtxtField;
+    private javax.swing.JTable stafftbl;
     // End of variables declaration//GEN-END:variables
 }
