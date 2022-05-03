@@ -40,6 +40,9 @@ public class MainFrame extends javax.swing.JFrame {
         staffSearchtxtField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         films = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        filmtbl = new javax.swing.JTable();
+        gotoAddFilm = new javax.swing.JButton();
         inven = new javax.swing.JPanel();
         clients = new javax.swing.JTabbedPane();
 
@@ -142,15 +145,72 @@ public class MainFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Staff", staff);
 
+        filmtbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Title", "description", "release year", "language id", "original language id", "rental duration", "rental rate", "length", "replacement cost", "rating", "special features", "last_update"
+            }
+        ));
+        jScrollPane2.setViewportView(filmtbl);
+
+        gotoAddFilm.setText("Insert New Film");
+        gotoAddFilm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gotoAddFilmActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout filmsLayout = new javax.swing.GroupLayout(films);
         films.setLayout(filmsLayout);
         filmsLayout.setHorizontalGroup(
             filmsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1250, Short.MAX_VALUE)
+            .addGroup(filmsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1244, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, filmsLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(gotoAddFilm, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
         );
         filmsLayout.setVerticalGroup(
             filmsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 713, Short.MAX_VALUE)
+            .addGroup(filmsLayout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
+                .addComponent(gotoAddFilm, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
         );
 
         jTabbedPane1.addTab("Films", films);
@@ -198,6 +258,11 @@ public class MainFrame extends javax.swing.JFrame {
         tr.setRowFilter(rf);
     }//GEN-LAST:event_staffSearchKeyReleased
 
+    private void gotoAddFilmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gotoAddFilmActionPerformed
+        this.dispose();
+        new AddFilm().setVisible(true);
+    }//GEN-LAST:event_gotoAddFilmActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -236,9 +301,12 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane clients;
     private javax.swing.JPanel films;
+    private javax.swing.JTable filmtbl;
+    private javax.swing.JButton gotoAddFilm;
     private javax.swing.JPanel inven;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel staff;
     private javax.swing.JTextField staffSearchtxtField;
