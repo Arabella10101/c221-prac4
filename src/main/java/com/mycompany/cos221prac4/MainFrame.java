@@ -74,6 +74,7 @@ populatetbls objPT;
         editbtn = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         id = new javax.swing.JTextField();
+        deletebtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -344,6 +345,13 @@ populatetbls objPT;
 
         jLabel10.setText("id");
 
+        deletebtn.setText("delete");
+        deletebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletebtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout clientsLayout = new javax.swing.GroupLayout(clients);
         clients.setLayout(clientsLayout);
         clientsLayout.setHorizontalGroup(
@@ -366,22 +374,23 @@ populatetbls objPT;
                     .addComponent(jLabel10))
                 .addGap(99, 99, 99)
                 .addGroup(clientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(active, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addressid, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(clientsurname, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(clientname, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(clientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(id, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(storeid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
                     .addGroup(clientsLayout.createSequentialGroup()
                         .addGroup(clientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lastupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(createdate, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(createdate, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(active, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(60, 60, 60)
                         .addGroup(clientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(deletebtn)
                             .addComponent(editbtn)
-                            .addComponent(insertclientbtn)))
-                    .addGroup(clientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(id, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(storeid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)))
+                            .addComponent(insertclientbtn))))
                 .addContainerGap(744, Short.MAX_VALUE))
         );
 
@@ -418,7 +427,8 @@ populatetbls objPT;
                 .addGap(18, 18, 18)
                 .addGroup(clientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(active, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(active, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deletebtn))
                 .addGap(18, 18, 18)
                 .addGroup(clientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -497,15 +507,31 @@ populatetbls objPT;
         try {
             objDBC = new DBConnection();
             objDBC.update(sql);
-            JOptionPane.showConfirmDialog(null, "client updated", null, JOptionPane.DEFAULT_OPTION);
+            JOptionPane.showConfirmDialog(null, "client inserted", null, JOptionPane.DEFAULT_OPTION);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AddFilm.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showConfirmDialog(null, "client update not successful", null, JOptionPane.DEFAULT_OPTION);
+            JOptionPane.showConfirmDialog(null, "client insert not successful", null, JOptionPane.DEFAULT_OPTION);
         } catch (SQLException ex) {
             Logger.getLogger(AddFilm.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showConfirmDialog(null, "client update not successful", null, JOptionPane.DEFAULT_OPTION);
+            JOptionPane.showConfirmDialog(null, "client insert not successful", null, JOptionPane.DEFAULT_OPTION);
         }
     }//GEN-LAST:event_insertclientbtnActionPerformed
+
+    private void deletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletebtnActionPerformed
+        String sql="DELETE FROM customers WHERE customer_id='"+id.getText()+"'";
+        DBConnection objDBC;
+        try {
+            objDBC = new DBConnection();
+            objDBC.update(sql);
+            JOptionPane.showConfirmDialog(null, "client deleted", null, JOptionPane.DEFAULT_OPTION);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AddFilm.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showConfirmDialog(null, "client delete not successful", null, JOptionPane.DEFAULT_OPTION);
+        } catch (SQLException ex) {
+            Logger.getLogger(AddFilm.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showConfirmDialog(null, "client delete not successful", null, JOptionPane.DEFAULT_OPTION);
+        }
+    }//GEN-LAST:event_deletebtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -556,6 +582,7 @@ populatetbls objPT;
     private javax.swing.JTextField clientsurname;
     private javax.swing.JTable clienttbl;
     private javax.swing.JTextField createdate;
+    private javax.swing.JButton deletebtn;
     private javax.swing.JButton editbtn;
     private javax.swing.JTextField email;
     private javax.swing.JPanel films;
