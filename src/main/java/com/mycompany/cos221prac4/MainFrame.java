@@ -4,8 +4,11 @@
  */
 package com.mycompany.cos221prac4;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -16,12 +19,15 @@ import javax.swing.table.TableRowSorter;
  * @author arabella
  */
 public class MainFrame extends javax.swing.JFrame {
-
+populatetbls objPT;
     /**
      * Creates new form MainFrame
      */
-    public MainFrame() {
+    public MainFrame() throws ClassNotFoundException, SQLException {
         initComponents();
+        
+        objPT=new populatetbls();
+        objPT.populateFilms(filmtbl);
     }
 
     /**
@@ -293,7 +299,13 @@ public class MainFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainFrame().setVisible(true);
+                try {
+                    new MainFrame().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
