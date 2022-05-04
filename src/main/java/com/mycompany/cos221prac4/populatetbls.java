@@ -29,7 +29,8 @@ public class populatetbls {
     public void populateFilms(javax.swing.JTable filmtbl) throws SQLException{
         ResultSet rs=objDBCon.query("SELECT * FROM film"); //selects all films
         
-        DefaultTableModel model = (DefaultTableModel) filmtbl.getModel();
+        //populates the table
+        DefaultTableModel model = (DefaultTableModel) filmtbl.getModel(); 
         model.setRowCount(0);
         while(rs.next()){
             Object[] rowData ={
@@ -41,6 +42,25 @@ public class populatetbls {
         filmtbl.setModel(model);
         if(filmtbl.getRowCount()>0){
             filmtbl.setRowSelectionInterval(0, 0);
+        }
+    }
+    
+    public void populateClients(javax.swing.JTable clienttbl) throws SQLException{
+        ResultSet rs=objDBCon.query("SELECT * FROM customer"); //selects all customers
+        
+        //populates the table
+        DefaultTableModel model = (DefaultTableModel) clienttbl.getModel(); 
+        model.setRowCount(0);
+        while(rs.next()){
+            Object[] rowData ={
+                rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),
+                rs.getString(8),rs.getString(9)
+            };
+            model.addRow(rowData);
+        }
+        clienttbl.setModel(model);
+        if(clienttbl.getRowCount()>0){
+            clienttbl.setRowSelectionInterval(0, 0);
         }
     }
 }
