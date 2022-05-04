@@ -471,9 +471,9 @@ populatetbls objPT;
     }//GEN-LAST:event_gotoAddFilmActionPerformed
 
     private void editbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editbtnActionPerformed
-        String sql="UPDATE customers SET store_id='"+storeid.getText()+"', first_name='"+clientname+"', last_name='"+clientsurname.getText()+
+        String sql="UPDATE customers SET store_id='"+storeid.getText()+"', first_name='"+clientname.getText()+"', last_name='"+clientsurname.getText()+
                 "', email='"+email.getText()+"', address_id='"+addressid.getText()+"', active='"+active.getText()+"', create_date='"+createdate.getText()+
-                "', last_update='"+lastupdate.getText()+"'";
+                "', last_update='"+lastupdate.getText()+"' WHERE customer_id='"+id.getText()+"'";
         DBConnection objDBC;
         try {
             objDBC = new DBConnection();
@@ -489,7 +489,22 @@ populatetbls objPT;
     }//GEN-LAST:event_editbtnActionPerformed
 
     private void insertclientbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertclientbtnActionPerformed
-        // TODO add your handling code here:
+        String sql="INSERT INTO customers(store_id,first_name,last_name,email,address_id,active,create_date,last_update) VALUES('"+
+                storeid.getText()+"', "+clientname.getText()+"', "+clientsurname.getText()+"', "+email.getText()+"', "+addressid.getText()+"', "+
+                active.getText()+"', "+createdate.getText()+"', "+lastupdate+"')";
+        
+        DBConnection objDBC;
+        try {
+            objDBC = new DBConnection();
+            objDBC.update(sql);
+            JOptionPane.showConfirmDialog(null, "client updated", null, JOptionPane.DEFAULT_OPTION);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AddFilm.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showConfirmDialog(null, "client update not successful", null, JOptionPane.DEFAULT_OPTION);
+        } catch (SQLException ex) {
+            Logger.getLogger(AddFilm.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showConfirmDialog(null, "client update not successful", null, JOptionPane.DEFAULT_OPTION);
+        }
     }//GEN-LAST:event_insertclientbtnActionPerformed
 
     /**
