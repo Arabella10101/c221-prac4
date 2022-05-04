@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -53,6 +54,26 @@ populatetbls objPT;
         clients = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         clienttbl = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        storeid = new javax.swing.JTextField();
+        clientname = new javax.swing.JTextField();
+        clientsurname = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
+        addressid = new javax.swing.JTextField();
+        active = new javax.swing.JTextField();
+        createdate = new javax.swing.JTextField();
+        lastupdate = new javax.swing.JTextField();
+        insertclientbtn = new javax.swing.JButton();
+        editbtn = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        id = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -130,7 +151,7 @@ populatetbls objPT;
             .addGroup(staffLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(staffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1238, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1259, Short.MAX_VALUE)
                     .addGroup(staffLayout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addGroup(staffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,7 +169,7 @@ populatetbls objPT;
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(staffSearchtxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addContainerGap(344, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Staff", staff);
@@ -206,7 +227,7 @@ populatetbls objPT;
             filmsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(filmsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1244, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1265, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, filmsLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(gotoAddFilm, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -216,7 +237,7 @@ populatetbls objPT;
             filmsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(filmsLayout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 376, Short.MAX_VALUE)
                 .addComponent(gotoAddFilm, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37))
         );
@@ -227,11 +248,11 @@ populatetbls objPT;
         inven.setLayout(invenLayout);
         invenLayout.setHorizontalGroup(
             invenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1250, Short.MAX_VALUE)
+            .addGap(0, 1271, Short.MAX_VALUE)
         );
         invenLayout.setVerticalGroup(
             invenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 713, Short.MAX_VALUE)
+            .addGap(0, 911, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Inventory", inven);
@@ -291,21 +312,127 @@ populatetbls objPT;
         ));
         jScrollPane3.setViewportView(clienttbl);
 
+        jLabel2.setText("store id");
+
+        jLabel3.setText("first name");
+
+        jLabel4.setText("surname");
+
+        jLabel5.setText("email");
+
+        jLabel6.setText("address id");
+
+        jLabel7.setText("active");
+
+        jLabel8.setText("create date");
+
+        jLabel9.setText("last update");
+
+        insertclientbtn.setText("Create New");
+        insertclientbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insertclientbtnActionPerformed(evt);
+            }
+        });
+
+        editbtn.setText("Edit");
+        editbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editbtnActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("id");
+
         javax.swing.GroupLayout clientsLayout = new javax.swing.GroupLayout(clients);
         clients.setLayout(clientsLayout);
         clientsLayout.setHorizontalGroup(
             clientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(clientsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1238, Short.MAX_VALUE)
+                .addComponent(jScrollPane3)
                 .addContainerGap())
+            .addGroup(clientsLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(clientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
+                .addGap(99, 99, 99)
+                .addGroup(clientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(active, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addressid, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(clientsurname, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(clientname, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(clientsLayout.createSequentialGroup()
+                        .addGroup(clientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lastupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(createdate, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(60, 60, 60)
+                        .addGroup(clientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(editbtn)
+                            .addComponent(insertclientbtn)))
+                    .addGroup(clientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(id, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(storeid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)))
+                .addContainerGap(744, Short.MAX_VALUE))
         );
+
+        clientsLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {active, addressid, clientname, clientsurname, createdate, email, lastupdate, storeid});
+
         clientsLayout.setVerticalGroup(
             clientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(clientsLayout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 284, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(clientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(clientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(storeid, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(clientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(clientname, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(clientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(clientsurname, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(clientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(clientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(addressid, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(clientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(active, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(clientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(createdate, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editbtn))
+                .addGap(18, 18, 18)
+                .addGroup(clientsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(lastupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(insertclientbtn))
+                .addGap(5, 5, 5))
         );
+
+        clientsLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {active, addressid, clientname, clientsurname, createdate, email, lastupdate, storeid});
 
         jTabbedPane1.addTab("Clients", clients);
 
@@ -342,6 +469,28 @@ populatetbls objPT;
         this.dispose();
         new AddFilm().setVisible(true);
     }//GEN-LAST:event_gotoAddFilmActionPerformed
+
+    private void editbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editbtnActionPerformed
+        String sql="UPDATE customers SET store_id='"+storeid.getText()+"', first_name='"+clientname+"', last_name='"+clientsurname.getText()+
+                "', email='"+email.getText()+"', address_id='"+addressid.getText()+"', active='"+active.getText()+"', create_date='"+createdate.getText()+
+                "', last_update='"+lastupdate.getText()+"'";
+        DBConnection objDBC;
+        try {
+            objDBC = new DBConnection();
+            objDBC.update(sql);
+            JOptionPane.showConfirmDialog(null, "client updated", null, JOptionPane.DEFAULT_OPTION);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AddFilm.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showConfirmDialog(null, "client update not successful", null, JOptionPane.DEFAULT_OPTION);
+        } catch (SQLException ex) {
+            Logger.getLogger(AddFilm.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showConfirmDialog(null, "client update not successful", null, JOptionPane.DEFAULT_OPTION);
+        }
+    }//GEN-LAST:event_editbtnActionPerformed
+
+    private void insertclientbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertclientbtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_insertclientbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -385,19 +534,39 @@ populatetbls objPT;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField active;
+    private javax.swing.JTextField addressid;
+    private javax.swing.JTextField clientname;
     private javax.swing.JPanel clients;
+    private javax.swing.JTextField clientsurname;
     private javax.swing.JTable clienttbl;
+    private javax.swing.JTextField createdate;
+    private javax.swing.JButton editbtn;
+    private javax.swing.JTextField email;
     private javax.swing.JPanel films;
     private javax.swing.JTable filmtbl;
     private javax.swing.JButton gotoAddFilm;
+    private javax.swing.JTextField id;
+    private javax.swing.JButton insertclientbtn;
     private javax.swing.JPanel inven;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField lastupdate;
     private javax.swing.JPanel staff;
     private javax.swing.JTextField staffSearchtxtField;
     private javax.swing.JTable stafftbl;
+    private javax.swing.JTextField storeid;
     // End of variables declaration//GEN-END:variables
 }
